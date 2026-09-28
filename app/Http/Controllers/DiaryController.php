@@ -9,6 +9,8 @@ class DiaryController extends Controller
     //
     public function index()
     {
-        return 'Hello, Controller!';
+        //return 'Hello, Controller!';
+        $name = 'Laravel';
+        return view('diary.index', ['name' => $name]);
     }
 }

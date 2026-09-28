@@ -22,3 +22,7 @@ Route::get('/diary/create', [DiaryController::class, 'create'])
 // 日記保存
 Route::post('/diary', [DiaryController::class, 'save'])
     ->name('diary.save');
+
+// 個別ページ
+Route::get('/diary/{id}', [DiaryController::class, 'show'])
+    ->name('diary.show');

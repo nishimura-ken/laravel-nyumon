@@ -19,6 +19,14 @@ class DiaryController extends Controller
         return view('diary.index', ['diaries' => $diaries]);
     }
 
+    // 個別画面
+    public function show($id)
+    {
+        // diariesテーブルからIDで検索してビューに渡す
+        $diary = Diary::find($id);
+        return view('diary.show', ['diary' => $diary]);
+    }
+
     // 日記作成画面
     public function create()
     {

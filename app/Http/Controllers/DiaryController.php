@@ -27,6 +27,14 @@ class DiaryController extends Controller
         return view('diary.show', ['diary' => $diary]);
     }
 
+    // 編集画面
+    public function edit($id)
+    {
+        // diariesテーブルからIDで検索してビューに渡す
+        $diary = Diary::find($id);
+        return view('diary.edit', ['diary' => $diary]);
+    }
+
     // 日記作成画面
     public function create()
     {
@@ -56,5 +64,23 @@ class DiaryController extends Controller
         return redirect()
             ->route('diary.create')
             ->with('message', '保存しました');
+    }
+
+    public function update(Request $request, $id)
+    {
+        // 更新対象の日記を取得する
+        $diary = Diary::find($id);
+
+        // 入力値をチェック
+        $validated = $request->validate([
+            'title' => 'required|max:20',
+            'body' => 'required|max:400',
+        ]);
+
+        // テーブルを更新する
+        $diary->update($validated);
+
+        // 詳細画面へ戻る
+        return back()->with('message', '更新しました');
     }
 }

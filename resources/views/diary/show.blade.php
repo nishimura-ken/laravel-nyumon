@@ -7,6 +7,11 @@
 <body>
     <h4>{{ $diary->title }}</h4>
     <div>
+        <a href="{{ route('diary.edit', $diary) }}">
+            <button type="button">編集</button>
+        </a>
+        </div>
+    <div>
         <div>{{ $diary->body }}</div>
         <div>{{ $diary->date }}</div>
     </div>

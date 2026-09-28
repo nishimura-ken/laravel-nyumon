@@ -23,6 +23,14 @@ Route::get('/diary/create', [DiaryController::class, 'create'])
 Route::post('/diary', [DiaryController::class, 'save'])
     ->name('diary.save');
 
+// 編集画面
+Route::get('/diary/{id}/edit', [DiaryController::class, 'edit'])
+    ->name('diary.edit');
+
 // 個別ページ
 Route::get('/diary/{id}', [DiaryController::class, 'show'])
     ->name('diary.show');
+
+// 更新処理
+Route::patch('/diary/{id}', [DiaryController::class, 'update'])
+    ->name('diary.update');

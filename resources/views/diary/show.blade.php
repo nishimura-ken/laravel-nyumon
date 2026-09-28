@@ -10,7 +10,12 @@
         <a href="{{ route('diary.edit', $diary) }}">
             <button type="button">編集</button>
         </a>
-        </div>
+    </div>
+    <form method="post" action="{{ route('diary.destroy', $diary) }}">
+        @csrf
+        @method('delete')
+        <button type="submit">削除</button>
+    </form>
     <div>
         <div>{{ $diary->body }}</div>
         <div>{{ $diary->date }}</div>

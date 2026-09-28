@@ -83,4 +83,19 @@ class DiaryController extends Controller
         // 詳細画面へ戻る
         return back()->with('message', '更新しました');
     }
+
+    public function destroy(Request $request)
+    {
+        // URLから削除対象の日記IDを取得
+        $id = $request->route('id');
+
+        // 削除対象の日記を取得
+        $diary = Diary::find($id);
+
+        // 日記を削除
+        $diary->delete();
+
+        // 日記一覧へ戻る
+        return redirect()->route('diary.index');
+    }
 }

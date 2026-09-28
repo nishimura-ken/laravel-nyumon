@@ -17,5 +17,8 @@
             </div>
             <hr>
         @endforeach
+    <p>
+        <a href="{{ route('diary.create') }}">日記を作成する</a>
+    </p>
 </body>
 </html>
